@@ -1,32 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 </head>
 <body>
-	<font face="Courier" color = "green">
-	<div id = "letter"></div>
-	<script type = "text/javascript">
-		function TeleType(domElem, str) {
-			var i = 0;
-			setInterval(function(){
-				if( i < str.length){
-					var cha = domElem.innerHTML;
-					if(str[i] == "\n"){
-						cha = "<br>";
-						i++;
-					} else {
-						cha = str[i++];	
-					}
-					domElem.innerHTML += cha;
-				}
-			},50);
+  <font face="Courier" color = "green">
+    <div id = "letter"></div>
+    <script type = "text/javascript">
+	  function TeleType(domElem, str) {
+	    var i = 0;
+		setInterval(function(){
+		  if( i < str.length){
+			  var cha = domElem.innerHTML;
+			  if(str[i] == "\n"){
+			    cha = "<br>";
+				i++;
+			  } else {
+			   cha = str[i++];	
+			  }	
+			  domElem.innerHTML += cha;
+			}
+		},50);
 			
 		}
-		TeleType(document.getElementById("letter"), "The quick brown fox jumped over the lazy dog.\n"
+	  TeleType(document.getElementById("letter"), "The quick brown fox jumped over the lazy dog.\n"
 			+ "\n"
-			+ "But he didn't jump over the moon."
-			);
+			+ "But he didn't jump over the moon.");
 	</script>
-	</font>
+  </font>
 </body>
 </html>
