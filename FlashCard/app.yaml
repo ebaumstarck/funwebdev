@@ -1,0 +1,17 @@
+application: flashcards-ench
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /css
+  static_dir: css
+- url: /lib
+  static_dir: lib
+- url: /js
+  static_dir: js
+
+  
+- url: /.*
+  script: flashcards.application
