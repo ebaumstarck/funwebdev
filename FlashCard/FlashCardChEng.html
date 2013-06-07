@@ -1,34 +1,32 @@
 <!DOCTYPE html>
   <html>
-  <meta charset = "gb18030">
+    <meta charset = "gb18030">
     <head>  
       <link rel = "stylesheet" type = "text/css" href = "/css/main.css">
       <script src = "/lib/jquery-1.9.1.min.js"></script>
+      <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+      <link rel="stylesheet" type="text/css" href="/css/jquery.ui.theme.css">
+      <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+      <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css">  
       <script type = "text/javascript" src = "/js/main.js"></script>
-  </head>
+    </head>
     <body>
-    <div>
-      <table id = "flashcard">
-				<tr height= "33%"> 
-					<td id = "english" ></td>
-				</tr>
-				<tr height = "33%">
-					<td id = "chinese" lang = "zh-CN"></td>
-				</tr>
-				<tr height = "33%">
-					<td id = "pinyin"></td>
-				</tr>
-			</table>
-    </div>
-    <div id = "buttons">
-      <button id = "next">Next</button>
-      <button id = "shuffle"> Shuffle</button>
-      <button id = "auto"> Auto Display</button>
-      <button id = "stop"> Stop Auto Display</button>
-    </div>
-		<div id = "buttomBtn">
-			<button id = "answer"> Show the answer</button>
-			<button id = "reviewBtn"> Review later</button>
-		</div>
+      <div id ="content">
+        <div id = "buttons">
+          <button id = "next">Next</button>
+          <button id = "shuffle"> Shuffle</button>
+          <button id = "auto"> Auto Display</button>
+          <button id = "stop"> Stop Auto Display</button>
+        </div>
+        <div id = "flashcard" data-json="{{content_json}}">
+          <div id = "english" ></div>
+          <div id = "chinese" lang = "zh-CN"></div>
+          <div id = "pinyin"></div>
+        </div>
+        <div id = "buttomBtn">
+          <button id = "answer"> Show the answer</button>
+          <button id = "reviewBtn"> Review later</button>
+        </div>
+      </div>
 		</body>
   </html>

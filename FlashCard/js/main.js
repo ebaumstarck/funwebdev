@@ -1,66 +1,5 @@
 ﻿$(document).ready(function(){
-	var content = [
-	  { "english":"hello",
-		"chinese":"你好",
-		"pinyin":"ni3hao3"
-	  },
-	  { "english":"thanks",
-		"chinese":"谢谢",
-		"pinyin":"xie4xie4"
-	  },
-	  { "english":"welcome",
-		"chinese":"欢迎",
-		"pinyin":"huan1ying2"
-	  },
-	  { "english":"you are welcome",
-		"chinese":"不用谢",
-		"pinyin":"bu2yong4xie4"
-	  },
-	  { "english":"wait a moment",
-		"chinese":"等一下",
-		"pinyin":"deng3yi1xia4"
-	  },
-	  { "english":"drive a car",
-		"chinese":"开车",
-		"pinyin":"kai1che1"
-	  },
-	  { "english":"good",
-		"chinese":"好",
-		"pinyin":"hao3"
-	  },
-	   { "english":"bad",
-		"chinese":"坏",
-		"pinyin":"huai4"
-	  },
-	  { "english":"expensive",
-		"chinese":"贵",
-		"pinyin":"gui4"
-	  },
-	  { "english":"cheap",
-		"chinese":"便宜",
-		"pinyin":"pian2yi2"
-	  },
-	  { "english":"busy",
-		"chinese":"忙",
-		"pinyin":"mang2"
-	  },
-	  { "english":"difficult",
-		"chinese":"难",
-		"pinyin":"nan2"
-	  },
-	  { "english":"smart",
-		"chinese":"聪明",
-		"pinyin":"cong1ming2"
-	  },
-	  { "english":"pretty",
-		"chinese":"漂亮",
-		"pinyin":"piao4liang4"
-	  },
-    { "english":"cute",
-		"chinese":"可爱",
-		"pinyin":"ke3ai4"
-	  }
-	],
+  var content = $("#flashcard").data("json"),
 	 i = 0,// the index of the entry in the word list
     answer = {},// the chinese,pinyin entry saved for display after user click answer button 
     wrongWords  = []//list for saving wrong words to review later
@@ -68,7 +7,7 @@
   // display the word by clicking the next button
   function display(list){
   // reset the flash card border color
-    $('#flashcard').css('border-color','#4d90fe');
+    $('#flashcard').css('border-color','rgb(53,155,198)');
     if( i <  list.length){
       // clear the chinese and pinyin 
       $('#chinese').empty();
@@ -125,26 +64,40 @@
     window.clearInterval(auto);
   }
   //click the button 
-  $('#next').click(function() {
-    display(content);
-  });
-  $('#shuffle').click(shuffle);
-  $('#auto').click(autoDisplay);
-  $('#stop').click(stopAutoDisplay);
+  $('#next')
+    .button()
+    .click(function() {
+      display(content);
+    });
+  $('#shuffle')
+    .button()
+    .click(shuffle);
+  $('#auto')
+    .button()
+    .click(autoDisplay);
+  $('#stop')
+    .button()
+    .click(stopAutoDisplay);
   // display the answer when the user click the show the answer button
-  $('#answer').click(function(){
-    $('#chinese').html(answer.chinese);
-    $("#pinyin").html(answer.pinyin);
-  });
-  $('#reviewBtn').click(function(){
-    var wrongWord = content[i-1];
-    wrongWords.push(wrongWord);
-    $('#flashcard').css('border-color','red');
-    //if($('#next').click()){
-    //	$('#flashcard').css('border-color','4d90fe');
-    //}
-  });
-  $('#reviewList').click(function(){
+  $('#answer')
+    .button()
+    .click(function(){
+      $('#chinese').html(answer.chinese);
+      $("#pinyin").html(answer.pinyin);
+    });
+  $('#reviewBtn')
+    .button()
+    .click(function(){
+      var wrongWord = content[i-1];
+      wrongWords.push(wrongWord);
+      $('#flashcard').css('border-color','red');
+      //if($('#next').click()){
+      //	$('#flashcard').css('border-color','4d90fe');
+      //}
+    });
+  $('#reviewList')
+    .button()
+    .click(function(){
   
+    });
   });
-});
