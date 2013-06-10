@@ -1,17 +1,70 @@
-#content > div {
+#header {
+  /*background-color: rgb(53,155,198);*/
+  background-image: url(images/ui-bg_glass_45_0078ae_1x400.png);
+  color : #ffffff;
+  height: 40px;
+  text-align: center;
+  font-family: Verdana,Arial,sans-serif;
+  /*margin: 4px; // sets all margins
+  margin: 4px 6px; // 4 means top and bottom; 6 means left and right
+  margin: 1px 2px 3px; // 1 means top, 2 means left and right, 3 means bottom
+  margin: 1px 2px 3px 4px; // 1 means top, 2 means right, 3 means bottom, 4 means left*/
+}
+
+#logo{
+  position:absolute;
+  left:10px;
+  font-size:30px;
+}
+/*#sign{
+  position:absolute;
+  right: 10px;
+  top:0px;
+}*/
+
+#content .left{
+  margin-bottom:auto;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  margin-top:30px;
+  margin-left:10px;
+  float: left;
+  width: 200px;
+}
+
+#content .middle{
   margin-bottom:auto;
   margin-left:auto;
   margin-right:auto;
   text-align:center;
+  margin-top:30px;
+  width: 600px;
+}
+
+#header div.menu {
+  float: right;
+}
+
+#menu{
+ width: 150px;
+}
+
+div.menu > div {
+  float: left;
+  /*margin-top: 10px;*/
+  margin-right:10px;
+  padding:8px;
+}
+
+.menu div:hover{
+  background-color:#77d5f7;
+  border-radius:5px;
 }
 
 #flashcard{
   width: 600px;
   height: 300px;
-  border-style: solid;
-  border-color: rgb(53,155,198);
-  border-radius: 5px;
-  margin-top:30px;
   /*margin-left:auto;
   margin-right:auto;*/
 }
@@ -20,8 +73,60 @@
   font-size: 30px;
   /*text-align: center;*/
 }
-/*#content{
-}*/
-#buttomBtn{
-  margin-top:30px;
+
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+/*flip the card*/
+/* entire container, keeps perspective */
+.flip-container {
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+ transform: rotateY(180deg);
+ -webkit-transform: rotateX(180deg) translate(0px, -200px);
+}
+
+.flip-container, .front, .back {
+  width: 600px;
+  height: 300px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  background: rgb(169,226,237);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-style: solid;
+  border-color: rgb(53,155,198);
+  border-radius: 5px;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateY(180deg);
 }

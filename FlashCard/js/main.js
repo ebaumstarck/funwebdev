@@ -4,6 +4,17 @@
     answer = {},// the chinese,pinyin entry saved for display after user click answer button 
     wrongWords  = []//list for saving wrong words to review later
     ;
+// create menu for all the decks of cards
+  $('#menu').menu({
+    select: function(event,ui){
+      $.ajax({
+        url: "/deck/" + ui.item.text()
+        // context: document.body
+      })
+      .done(function(data) {
+      });
+    }
+  });
   // display the word by clicking the next button
   function display(list){
   // reset the flash card border color
@@ -63,6 +74,7 @@
   function stopAutoDisplay(){
     window.clearInterval(auto);
   }
+
   //click the button 
   $('#next')
     .button()
