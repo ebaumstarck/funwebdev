@@ -1,0 +1,12 @@
+{
+  "name": "Chinese 2",
+  "cards": [{
+    "english": "go",
+    "chinese": "去",
+    "pinyin": "qu4"
+  }, {
+    "english": "cat",
+    "chinese": "猫",
+    "pinyin": "mao1"
+  }]
+}
