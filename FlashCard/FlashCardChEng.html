@@ -1,9 +1,8 @@
-
-
 <!DOCTYPE html>
   <html>
     <meta charset = "gb18030">
-    <head>  
+    <head>
+      <title>Flash Cards</title>  
       <link rel = "stylesheet" type = "text/css" href = "/css/main.css">
       <script src = "/lib/jquery-1.9.1.min.js"></script>
       <script type="text/javascript" src="/lib/jquery-ui.js"></script>
@@ -15,24 +14,24 @@
     <body>
       <div id = "header">
         <div id = "logo" class="title">FlashCards</div>
+        <!--
         <div class="menu">
-          <div id = "newCards">New Cards</div>
-          <div id = "share">Share</div>
           <div id = "sign">
             {% if user %}
-              Hello, {{ user.nickname }}. <a href="{{ logout_url }}">Sign out.</a>
+              {{ user.nickname }} <a href="{{ logout_url }}">Sign out</a>
             {% else %}
-              You are not logged in. <a href="{{ login_url }}">Sign in or create account.</a>
+              <a href="{{ login_url }}">Sign in or Register.</a>
             {% endif %}
           </div>
         </div>
+        -->
       </div>
       <div id ="content">
         <div class = "left">
           <ul id = "menu">
-            {%if deckNames %}
-              {% for name in deckNames %}
-                <li><a href= "/?deckName={{ name }}">{{ name }}</a></li>
+            {%if deck_names %}
+              {% for name in deck_names %}
+                <li><a href= "/{{ name }}">{{ name }}</a></li>
               {% endfor %}
             {% else %}
               <div>You have no decks of cards</div>
@@ -44,29 +43,52 @@
           <div id = "buttons">
             <button id = "next">Next</button>
             <button id = "shuffle"> Shuffle</button>
+            <!--
             <button id = "auto"> Auto Display</button>
             <button id = "stop"> Stop Auto Display</button>
+            -->
+            <input type="checkbox" id="auto" />
+            <label for="auto">Auto Display</label>
           </div>
-          <div id = "flashcard"  class="flip-container" ontouchstart="this.classList.toggle('hover');" data-json="{{content_json}}">
-            <div class="flipper">
-              <div class="front">
-                <div id = "english" ></div>
-                <div id = "chinese" lang = "zh-CN"></div>
-                <div id = "pinyin"></div>
-              </div>
-              <div class="back">
-                back
+          <div class="container">
+            <div id = "flashcard" class="flip-container" ontouchstart="this.classList.toggle('hover');" data-json="{{content_json}}">
+              <div class="flipper">
+                <div class="front">
+                  <div id = "english" ></div>
+                </div>
+                <div class="back">
+                  <div id = "chinese" lang = "zh-CN"></div>
+                  <div id = "pinyin"></div>
+                </div>
               </div>
             </div>
           </div>
+          <div id="show">
+            <input type="radio" id="showEnglish" name="show" checked="checked" />
+            <label for="showEnglish">English</label>
+            <input type="radio" id="showChinese" name="show" />
+            <label for="showChinese">Chinese</label>
+            <input type="radio" id="showPinyin" name="show" />
+            <label for="showPinyin">Pinyin</label>
+          </div>
+          <!--
           <div id = "buttomBtn">
             <button id = "answer"> Show the answer</button>
             <button id = "reviewBtn"> Review later</button>
           </div>
+          -->
         </div>
       </div>
-      <hr>
-      <div id = "footer">@Emma Baumstarck</div>
-
+      <div id="footer">
+        <ul class = "footerList">
+          <li>Contact us</li>
+          <li>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+            <script>
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+            </script>
+         </li>
+        </ul>     
+      </div>
 		</body>
   </html>
